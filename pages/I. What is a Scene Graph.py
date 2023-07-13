@@ -14,7 +14,6 @@ import sys,os
 import warnings
 warnings.filterwarnings('ignore')
 from streamlit_option_menu import option_menu
-sys.path.append('/app/streamlit_scenegraph/pages/')
 
 from utils.vis import graph_visual
 
@@ -28,7 +27,7 @@ st.markdown("""
 }
 """, unsafe_allow_html=True)
 
-with open(file='/app/streamlit_scenegraph/data/tbl_scene.pkl', mode='rb') as f:
+with open(file='data/tbl_scene.pkl', mode='rb') as f:
     tbl_scene=pkl.load(f)
 
 def get_spo(Subject, Predicate, Object):
