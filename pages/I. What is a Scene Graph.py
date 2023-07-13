@@ -36,7 +36,7 @@ def load_image(img_path):
 
 
 def Intro():
-    st.markdown('### <h1 style='text-align: center;font-size:270%'> Scene Graph란?</h1>', unsafe_allow_html=True)
+    st.markdown("### <h1 style='text-align: center;font-size:270%'> Scene Graph란?</h1>", unsafe_allow_html=True)
 
     det_exp = """
                 Scene Graph(장면 그래프)란 이미지 및 영상 데이터의 <strong>장면(scene)에서 객체(object) 및 관계(relationship)를 추출</strong>하고 이를 
