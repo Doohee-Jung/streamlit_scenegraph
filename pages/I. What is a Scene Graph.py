@@ -83,7 +83,7 @@ def Explanation():
         st.write("")
     st.markdown("___")
 #----------------------------------------------------------------------------------------------------------------
-    st.markdown("""## <h1 style='text-align: left; font-size:180%'>☑ GDB를 이용한 Scene Graph 모델링</h1>""", unsafe_allow_html=True)
+    st.markdown("""## <h1 style='text-align: left; font-size:180%'> GDB를 이용한 Scene Graph 모델링</h1>""", unsafe_allow_html=True)
     img_2 = 'image/part1_img2.PNG'
     img2 = load_image(img_2)
     text2 = """
@@ -158,8 +158,8 @@ def Practice1():
             
             if clicked is not None:
 
-                min_ttl1 = f"Result 1 : selected <i>Image</i>"
-                st.markdown(f"""## <h5 style='text-align: center; font-size:250%, font-weight = 600'>{min_ttl1}</h5>""", unsafe_allow_html=True)
+                min_ttl1 = "Result 1 : selected Image"
+                st.write(min_ttl1)
                 
                 with st.spinner('Loading for Scene Graph...'):
                     time.sleep(0.5)
@@ -170,10 +170,9 @@ def Practice1():
                 
         with col_3:
 
-            min_ttl2 = f"Result 2 : <i>Scene Graph</i> of selected Image"
-            st.markdown(f"""## <h5 style='text-align: center; font-size:250%, font-weight = 100'>{min_ttl2}</h5>""", 
-                        unsafe_allow_html=True)
-
+            min_ttl2 = "Result 2 : Scene Graph of selected Image"
+            st.write(min_ttl2)
+            
             if clicked is not None:
 
                 graph_visual(df_dict[img_idx],'subject','object','predicate',width=900,height=800)
