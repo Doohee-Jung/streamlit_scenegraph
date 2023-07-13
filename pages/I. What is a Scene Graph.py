@@ -92,11 +92,11 @@ def Explanation():
     st.write(text2)
 
     st.text("")
-    st.image(img2, width=1000)
+    st.image(img2)
     st.text("")
 
     img2_text = """
-            <strong style=" font-size : 120%">• 술어(predicate)를 <i>노드(node)</i>로 그래프 모델링하는 경우</strong><br>
+            <strong style=" font-size : 120%"> 술어(predicate)를 <i>노드(node)</i>로 그래프 모델링하는 경우</strong><br>
             일반적으로 Scene Graph 모델링 시 속성(property)정보가 없는 RDF(Resource Description Framework) 형태의<br>
             그래프로써 가장 많이 사용하는 기법<br>
             술어를 노드로 표현하여 직관적일 수 있지만, 노드의 수가 많아져서 연산량 증가<br><br>
@@ -177,294 +177,294 @@ def Practice1():
 
 
 
-def Practice2():
+# def Practice2():
 
 
-    ttl_txt1_1 = "SPO를 이용한 이미지 및 해당 이미지에 대한 Scene Graph 추출"
-    st.markdown(f"""## <h1 class ="center">{ttl_txt1_1}</h1>""", unsafe_allow_html=True)
-    st.text("")
+#     ttl_txt1_1 = "SPO를 이용한 이미지 및 해당 이미지에 대한 Scene Graph 추출"
+#     st.markdown(f"""## <h1 class ="center">{ttl_txt1_1}</h1>""", unsafe_allow_html=True)
+#     st.text("")
 
-    col_a, col_b = st.columns([2, 1])
+#     col_a, col_b = st.columns([2, 1])
     
-    with col_a:
-        st.write("이미지에 검색할 **주어, 술어, 목적어**(**SPO**)를 입력해주세요.")
-    with col_b:
-        q_btn = st.radio(label = '질의 종류', options = ['단일 질의', '복합 질의'], label_visibility = 'collapsed')
-        st.write('<style>div.row-widget.stRadio > div{flex-direction : row;}</style>', unsafe_allow_html=True)
+#     with col_a:
+#         st.write("이미지에 검색할 **주어, 술어, 목적어**(**SPO**)를 입력해주세요.")
+#     with col_b:
+#         q_btn = st.radio(label = '질의 종류', options = ['단일 질의', '복합 질의'], label_visibility = 'collapsed')
+#         st.write('<style>div.row-widget.stRadio > div{flex-direction : row;}</style>', unsafe_allow_html=True)
 
-    st.write("")
+#     st.write("")
 
-    sub2img_msg1 = "이미지를 검색할 **주어**(**Subject**)를 입력해주세요."
-    pred2img_msg1 = "이미지를 검색할 **술어**(**Predicate**)를 입력해주세요."
-    obj2img_msg1 = "이미지를 검색할 **목적어**(**Object**)를 입력해주세요."
+#     sub2img_msg1 = "이미지를 검색할 **주어**(**Subject**)를 입력해주세요."
+#     pred2img_msg1 = "이미지를 검색할 **술어**(**Predicate**)를 입력해주세요."
+#     obj2img_msg1 = "이미지를 검색할 **목적어**(**Object**)를 입력해주세요."
 
-# -------------------------------------------------------- 단일 질의 (下)--------------------------------------------------------
-    try:
-        if q_btn == "단일 질의":
+# # -------------------------------------------------------- 단일 질의 (下)--------------------------------------------------------
+#     try:
+#         if q_btn == "단일 질의":
         
-            # 기본적으로 전체 selectbox가 빈값이 될수는 없어서 첫번째 selectbox만 'man'으로 지정해주기
-            ## 추후 다른 값들은 디폴트가 아니라 selectbox list의 첫번째 요소로 넣어서 바로 나오게하기
-            ### n번째 selectbox에 따라 가능한 항목 list들만 나오게함
-            sub_list1 = sorted(list(set(list(tbl_scene['subject'].values))), reverse = False) 
-            default_ix1 = sub_list1.index('man')
-            pred_input1 = ""
-            obj_input1 = ""
+#             # 기본적으로 전체 selectbox가 빈값이 될수는 없어서 첫번째 selectbox만 'man'으로 지정해주기
+#             ## 추후 다른 값들은 디폴트가 아니라 selectbox list의 첫번째 요소로 넣어서 바로 나오게하기
+#             ### n번째 selectbox에 따라 가능한 항목 list들만 나오게함
+#             sub_list1 = sorted(list(set(list(tbl_scene['subject'].values))), reverse = False) 
+#             default_ix1 = sub_list1.index('man')
+#             pred_input1 = ""
+#             obj_input1 = ""
 
-            col1 , col2, col3 = st.columns(3)
-            with col1:
-                sub_input1 = st.selectbox(label = sub2img_msg1, options = sub_list1,
-                                    key = 1, disabled = False, index = default_ix1)
-                sub_input1.lower() # 소문자로 전부 통일
-
-
-            with col2:
-                if sub_input1 != "":
-                    pred_list1 = sorted(list(set(list(tbl_scene.loc[tbl_scene.subject == sub_input1]['predicate'].values))),
-                                        reverse = False)
-                    pred_list1.insert(0, 'playing')
-                    pred_input1 = st.selectbox(label = pred2img_msg1, options = pred_list1,
-                                    key = 2, disabled = False)
-                    pred_input1.lower() # 소문자로 전부 통일
-                #st.write(pred_list)
+#             col1 , col2, col3 = st.columns(3)
+#             with col1:
+#                 sub_input1 = st.selectbox(label = sub2img_msg1, options = sub_list1,
+#                                     key = 1, disabled = False, index = default_ix1)
+#                 sub_input1.lower() # 소문자로 전부 통일
 
 
-            with col3:
-                if sub_input1 != "" and pred_input1 != "" :
-                    obj_list1 = sorted(list(set(list(tbl_scene.loc[(tbl_scene.subject == sub_input1)&
-                                                                (tbl_scene.predicate == pred_input1)]['object'].values))),
-                                                                reverse = False)
-                    obj_list1.insert(0, 'soccer')
+#             with col2:
+#                 if sub_input1 != "":
+#                     pred_list1 = sorted(list(set(list(tbl_scene.loc[tbl_scene.subject == sub_input1]['predicate'].values))),
+#                                         reverse = False)
+#                     pred_list1.insert(0, 'playing')
+#                     pred_input1 = st.selectbox(label = pred2img_msg1, options = pred_list1,
+#                                     key = 2, disabled = False)
+#                     pred_input1.lower() # 소문자로 전부 통일
+#                 #st.write(pred_list)
+
+
+#             with col3:
+#                 if sub_input1 != "" and pred_input1 != "" :
+#                     obj_list1 = sorted(list(set(list(tbl_scene.loc[(tbl_scene.subject == sub_input1)&
+#                                                                 (tbl_scene.predicate == pred_input1)]['object'].values))),
+#                                                                 reverse = False)
+#                     obj_list1.insert(0, 'soccer')
                     
-                    obj_input1 = st.selectbox(label = obj2img_msg1, options = obj_list1,
-                                        key = 3, disabled = False)#, index = default_ix3)
-                    obj_input1.lower() # 소문자로 전부 통일
-            col01,col02,col03=st.columns(3)
+#                     obj_input1 = st.selectbox(label = obj2img_msg1, options = obj_list1,
+#                                         key = 3, disabled = False)#, index = default_ix3)
+#                     obj_input1.lower() # 소문자로 전부 통일
+#             col01,col02,col03=st.columns(3)
         
 
-            if sub_input1 != "" and pred_input1 != "" and obj_input1 != "":
+#             if sub_input1 != "" and pred_input1 != "" and obj_input1 != "":
 
-                img_dic = get_spo(sub_input1, pred_input1, obj_input1) #이미지와 해당 SPO테이블이 dictionary 형태로 저장되는 함수
-                img_number = len(img_dic.keys())
-                with col02:
-                    img_number_txt1 = f"<strong><i>{img_number}</i></strong> - Image is detected "
-                    st.markdown(f"""<span style='text-align: left; font-size:120%'>{img_number_txt1}</span>""", unsafe_allow_html=True)
-                st.markdown("___")
+#                 img_dic = get_spo(sub_input1, pred_input1, obj_input1) #이미지와 해당 SPO테이블이 dictionary 형태로 저장되는 함수
+#                 img_number = len(img_dic.keys())
+#                 with col02:
+#                     img_number_txt1 = f"<strong><i>{img_number}</i></strong> - Image is detected "
+#                     st.markdown(f"""<span style='text-align: left; font-size:120%'>{img_number_txt1}</span>""", unsafe_allow_html=True)
+#                 st.markdown("___")
                             
-                if img_number > 0:
+#                 if img_number > 0:
             
-                    col1, col2, col3, col4 = st.columns([4.8, 0.2, 4.8, 0.2])
+#                     col1, col2, col3, col4 = st.columns([4.8, 0.2, 4.8, 0.2])
 
-                    if 'counter' not in st.session_state: 
-                        st.session_state.counter = 0
+#                     if 'counter' not in st.session_state: 
+#                         st.session_state.counter = 0
 
-                    # Get list of images in folder
-                    img_num_lst =  list(img_dic.keys())
-                    img_path =  """https://cs.stanford.edu/people/rak248/VG_100K/"""
-                    filteredImages = [img_path + f"{img_num}.jpg" for img_num in img_num_lst]
+#                     # Get list of images in folder
+#                     img_num_lst =  list(img_dic.keys())
+#                     img_path =  """https://cs.stanford.edu/people/rak248/VG_100K/"""
+#                     filteredImages = [img_path + f"{img_num}.jpg" for img_num in img_num_lst]
                     
-                    #filteredImages = [image_resize(image) for image in filteredImages]
-                    def showPhoto(photo, df):
-                        ## Increments the counter to get next photo
-                        st.session_state.counter += 1
-                        if st.session_state.counter >= len(filteredImages):
-                            st.session_state.counter = 0
+#                     #filteredImages = [image_resize(image) for image in filteredImages]
+#                     def showPhoto(photo, df):
+#                         ## Increments the counter to get next photo
+#                         st.session_state.counter += 1
+#                         if st.session_state.counter >= len(filteredImages):
+#                             st.session_state.counter = 0
 
-                        with col03:
-                            img_number_txt2 = f"<strong style='font-size:150%'><i>{st.session_state.counter + 1}</i></strong>(th) out of {img_number}"
-                            st.markdown(f"""###### {img_number_txt2}""", unsafe_allow_html=True)
+#                         with col03:
+#                             img_number_txt2 = f"<strong style='font-size:150%'><i>{st.session_state.counter + 1}</i></strong>(th) out of {img_number}"
+#                             st.markdown(f"""###### {img_number_txt2}""", unsafe_allow_html=True)
 
-                        with col1:
-                            res_ttl1 = f"Result 1 : <strong style = 'font-size : 120%'><i>Image</i></strong> matched by SPO"
-                            st.markdown(f"""##### {res_ttl1}""",
-                                        unsafe_allow_html=True)
-                            st.image(photo)
-                        with col3: 
-                            res_ttl2 = f"Result 2 : <strong style = 'font-size : 120%'><i>Scene Graph</i></strong> of Image matched by SPO"
-                            st.markdown(f"""##### {res_ttl2}""",
-                                        unsafe_allow_html=True)
-                            graph_visual(df, 'subject','object','predicate')
+#                         with col1:
+#                             res_ttl1 = f"Result 1 : <strong style = 'font-size : 120%'><i>Image</i></strong> matched by SPO"
+#                             st.markdown(f"""##### {res_ttl1}""",
+#                                         unsafe_allow_html=True)
+#                             st.image(photo)
+#                         with col3: 
+#                             res_ttl2 = f"Result 2 : <strong style = 'font-size : 120%'><i>Scene Graph</i></strong> of Image matched by SPO"
+#                             st.markdown(f"""##### {res_ttl2}""",
+#                                         unsafe_allow_html=True)
+#                             graph_visual(df, 'subject','object','predicate')
 
 
                     
 
-                    # Select photo a send it to button
-                    photo = filteredImages[st.session_state.counter%img_number]
-                    df_idx = img_num_lst[st.session_state.counter%img_number]
-                    show_btn = col01.button("이미지 검색 결과 확인하기(계속)",on_click = showPhoto, args = ([photo, img_dic[df_idx]]))
+#                     # Select photo a send it to button
+#                     photo = filteredImages[st.session_state.counter%img_number]
+#                     df_idx = img_num_lst[st.session_state.counter%img_number]
+#                     show_btn = col01.button("이미지 검색 결과 확인하기(계속)",on_click = showPhoto, args = ([photo, img_dic[df_idx]]))
 
             
-            if sub_input1 == "":
-                st.write("❗ 주어를 입력(선택)해주세요")
-            if pred_input1 == "":
-                st.write("❗ 술어를 입력(선택)해주세요")
-            if obj_input1 == "":
-                st.write("❗ 목적어를 입력(선택)해주세요")
-            if sub_input1 == "" and pred_input1 == "" and obj_input1 == "":
-                st.write("❗ **주어** 혹은 **술어** 혹은 **목적어**를 ***전부*** 입력해주세요.")
-    except:
-        st.write("Not Matched Image ❗")
-# -------------------------------------------------------- 단일 질의 (上)--------------------------------------------------------
+#             if sub_input1 == "":
+#                 st.write("❗ 주어를 입력(선택)해주세요")
+#             if pred_input1 == "":
+#                 st.write("❗ 술어를 입력(선택)해주세요")
+#             if obj_input1 == "":
+#                 st.write("❗ 목적어를 입력(선택)해주세요")
+#             if sub_input1 == "" and pred_input1 == "" and obj_input1 == "":
+#                 st.write("❗ **주어** 혹은 **술어** 혹은 **목적어**를 ***전부*** 입력해주세요.")
+#     except:
+#         st.write("Not Matched Image ❗")
+# # -------------------------------------------------------- 단일 질의 (上)--------------------------------------------------------
 
-# -------------------------------------------------------- 복합 질의 (下)--------------------------------------------------------
+# # -------------------------------------------------------- 복합 질의 (下)--------------------------------------------------------
 
-    if q_btn == "복합 질의":
+#     if q_btn == "복합 질의":
 
-        # -------------------------------------- 복합질의 내 조건1(단일 질의 조건) (下)--------------------------------------------
+#         # -------------------------------------- 복합질의 내 조건1(단일 질의 조건) (下)--------------------------------------------
 
-        # 기본적으로 전체 selectbox가 빈값이 될수는 없어서 첫번째 selectbox만 'man'으로 지정해주기
-        ## 추후 다른 값들은 디폴트가 아니라 selectbox list의 첫번째 요소로 넣어서 바로 나오게하기
-        ### n번째 selectbox에 따라 가능한 항목 list들만 나오게함
-        sub_list1 = sorted(list(set(list(tbl_scene['subject'].values))), reverse = False)  
-        default_ix1 = sub_list1.index('man')
-        pred_input1 = ""
-        obj_input1 = ""
+#         # 기본적으로 전체 selectbox가 빈값이 될수는 없어서 첫번째 selectbox만 'man'으로 지정해주기
+#         ## 추후 다른 값들은 디폴트가 아니라 selectbox list의 첫번째 요소로 넣어서 바로 나오게하기
+#         ### n번째 selectbox에 따라 가능한 항목 list들만 나오게함
+#         sub_list1 = sorted(list(set(list(tbl_scene['subject'].values))), reverse = False)  
+#         default_ix1 = sub_list1.index('man')
+#         pred_input1 = ""
+#         obj_input1 = ""
 
-        col1 , col2, col3 = st.columns(3)
-        with col1:
-            sub_input1 = st.selectbox(label = sub2img_msg1, options = sub_list1,
-                                key = 1, disabled = False, index = default_ix1)
-            sub_input1.lower() # 소문자로 전부 통일
-
-
-        with col2:
-            if sub_input1 != "":
-                pred_list1 = sorted(list(set(list(tbl_scene.loc[tbl_scene.subject == sub_input1]['predicate'].values))), reverse = False)
-                pred_list1.insert(0, 'playing')
-                pred_input1 = st.selectbox(label = pred2img_msg1, options = pred_list1,
-                                key = 2, disabled = False)
-                pred_input1.lower() # 소문자로 전부 통일
-            #st.write(pred_list)
+#         col1 , col2, col3 = st.columns(3)
+#         with col1:
+#             sub_input1 = st.selectbox(label = sub2img_msg1, options = sub_list1,
+#                                 key = 1, disabled = False, index = default_ix1)
+#             sub_input1.lower() # 소문자로 전부 통일
 
 
-        with col3:
-            if sub_input1 != "" and pred_input1 != "" :
-                obj_list1 = sorted(
-                    list(set(list(tbl_scene.loc[(tbl_scene.subject == sub_input1)&(tbl_scene.predicate == pred_input1)]['object'].values))),
-                    reverse = False)
-                obj_list1.insert(0, 'tennis')
+#         with col2:
+#             if sub_input1 != "":
+#                 pred_list1 = sorted(list(set(list(tbl_scene.loc[tbl_scene.subject == sub_input1]['predicate'].values))), reverse = False)
+#                 pred_list1.insert(0, 'playing')
+#                 pred_input1 = st.selectbox(label = pred2img_msg1, options = pred_list1,
+#                                 key = 2, disabled = False)
+#                 pred_input1.lower() # 소문자로 전부 통일
+#             #st.write(pred_list)
+
+
+#         with col3:
+#             if sub_input1 != "" and pred_input1 != "" :
+#                 obj_list1 = sorted(
+#                     list(set(list(tbl_scene.loc[(tbl_scene.subject == sub_input1)&(tbl_scene.predicate == pred_input1)]['object'].values))),
+#                     reverse = False)
+#                 obj_list1.insert(0, 'tennis')
                 
-                obj_input1 = st.selectbox(label = obj2img_msg1, options = obj_list1,
-                                    key = 3, disabled = False)#, index = default_ix3)
-                obj_input1.lower() # 소문자로 전부 통일
-        col01,col02,col03=st.columns(3)
+#                 obj_input1 = st.selectbox(label = obj2img_msg1, options = obj_list1,
+#                                     key = 3, disabled = False)#, index = default_ix3)
+#                 obj_input1.lower() # 소문자로 전부 통일
+#         col01,col02,col03=st.columns(3)
 
         
-        if sub_input1 == "":
-            st.write("❗ 주어를 입력(선택)해주세요")
-        if pred_input1 == "":
-            st.write("❗ 술어를 입력(선택)해주세요")
-        if obj_input1 == "":
-            st.write("❗ 목적어를 입력(선택)해주세요")
-        if sub_input1 == "" and pred_input1 == "" and obj_input1 == "":
-            st.write("❗ **주어** 혹은 **술어** 혹은 **목적어**를 ***전부*** 입력해주세요.")
+#         if sub_input1 == "":
+#             st.write("❗ 주어를 입력(선택)해주세요")
+#         if pred_input1 == "":
+#             st.write("❗ 술어를 입력(선택)해주세요")
+#         if obj_input1 == "":
+#             st.write("❗ 목적어를 입력(선택)해주세요")
+#         if sub_input1 == "" and pred_input1 == "" and obj_input1 == "":
+#             st.write("❗ **주어** 혹은 **술어** 혹은 **목적어**를 ***전부*** 입력해주세요.")
 
-    # -------------------------------------- 복합질의 내 조건1(단일 질의 조건) (上)--------------------------------------------
+#     # -------------------------------------- 복합질의 내 조건1(단일 질의 조건) (上)--------------------------------------------
 
-    # -------------------------------------- 복합질의 내 조건2(복합 질의 조건) (下)--------------------------------------------
+#     # -------------------------------------- 복합질의 내 조건2(복합 질의 조건) (下)--------------------------------------------
 
-        sub2img_msg2 = "이미지를 검색할 **두 번째 주어**(**Subject**)를 입력해주세요."
-        pred2img_msg2 = "이미지를 검색할 **두 번째 술어**(**Predicate**)를 입력해주세요."
-        obj2img_msg2 = "이미지를 검색할 **두 번째 목적어**(**Object**)를 입력해주세요."
+#         sub2img_msg2 = "이미지를 검색할 **두 번째 주어**(**Subject**)를 입력해주세요."
+#         pred2img_msg2 = "이미지를 검색할 **두 번째 술어**(**Predicate**)를 입력해주세요."
+#         obj2img_msg2 = "이미지를 검색할 **두 번째 목적어**(**Object**)를 입력해주세요."
         
-        cond1_img_list = list(tbl_scene.loc[(tbl_scene['subject'] == sub_input1) & 
-                                    (tbl_scene['predicate'] == pred_input1) &(tbl_scene['object'] == obj_input1), 'image_id'])
-        cond1_tbl_scene = tbl_scene[tbl_scene['image_id'].isin(cond1_img_list) & 
-                                    ((tbl_scene['subject'] != sub_input1) | (tbl_scene['predicate'] != pred_input1) | 
-                                    (tbl_scene['object'] != obj_input1))].reset_index(drop = True)
+#         cond1_img_list = list(tbl_scene.loc[(tbl_scene['subject'] == sub_input1) & 
+#                                     (tbl_scene['predicate'] == pred_input1) &(tbl_scene['object'] == obj_input1), 'image_id'])
+#         cond1_tbl_scene = tbl_scene[tbl_scene['image_id'].isin(cond1_img_list) & 
+#                                     ((tbl_scene['subject'] != sub_input1) | (tbl_scene['predicate'] != pred_input1) | 
+#                                     (tbl_scene['object'] != obj_input1))].reset_index(drop = True)
         
-        sub_list2 = sorted(list(set(list(cond1_tbl_scene['subject'].values))), reverse = False)
-        default_idx1 = sub_list2.index('man')
+#         sub_list2 = sorted(list(set(list(cond1_tbl_scene['subject'].values))), reverse = False)
+#         default_idx1 = sub_list2.index('man')
         
-        pred_input2 = ""
-        obj_input2 = ""
+#         pred_input2 = ""
+#         obj_input2 = ""
         
-        col1 , col2, col3 = st.columns(3)
-        with col1:
-            sub_input2 = st.selectbox(label = sub2img_msg2, options = sub_list2,
-                                    key = 4, disabled = False, index = default_idx1) 
-            #전부 빈값으로 놔둘 수 없어서 일단 두 번째 subject 값만 제일 첫번째 값으로 채우기
-            sub_input2.lower() # 소문자로 전부 통일
+#         col1 , col2, col3 = st.columns(3)
+#         with col1:
+#             sub_input2 = st.selectbox(label = sub2img_msg2, options = sub_list2,
+#                                     key = 4, disabled = False, index = default_idx1) 
+#             #전부 빈값으로 놔둘 수 없어서 일단 두 번째 subject 값만 제일 첫번째 값으로 채우기
+#             sub_input2.lower() # 소문자로 전부 통일
             
-        with col2:
-            if sub_input2 != "":
-                pred_list2 = sorted(list(set(list(cond1_tbl_scene.loc[cond1_tbl_scene.subject == sub_input2]['predicate'].values))),
-                                    reverse = False)
-                pred_list2.insert(0, 'wearing')
-                pred_input2 = st.selectbox(label = pred2img_msg2, options = pred_list2,
-                                        key = 5, disabled = False)
-                pred_input2.lower() # 소문자로 전부 통일
-                #st.write(pred_list)
+#         with col2:
+#             if sub_input2 != "":
+#                 pred_list2 = sorted(list(set(list(cond1_tbl_scene.loc[cond1_tbl_scene.subject == sub_input2]['predicate'].values))),
+#                                     reverse = False)
+#                 pred_list2.insert(0, 'wearing')
+#                 pred_input2 = st.selectbox(label = pred2img_msg2, options = pred_list2,
+#                                         key = 5, disabled = False)
+#                 pred_input2.lower() # 소문자로 전부 통일
+#                 #st.write(pred_list)
                 
-        with col3:
-            if sub_input2 != "" and pred_input2 != "" :
-                obj_list2 = sorted(list(set(list(
-                    cond1_tbl_scene.loc[(cond1_tbl_scene.subject == sub_input2)&(cond1_tbl_scene.predicate == pred_input2)]['object'].values))),
-                    reverse = False)
-                obj_list2.insert(0, 'white shirt')
-                obj_input2 = st.selectbox(label = obj2img_msg2, options = obj_list2,
-                                        key = 6, disabled = False)
-                obj_input2.lower() # 소문자로 전부 통일
+#         with col3:
+#             if sub_input2 != "" and pred_input2 != "" :
+#                 obj_list2 = sorted(list(set(list(
+#                     cond1_tbl_scene.loc[(cond1_tbl_scene.subject == sub_input2)&(cond1_tbl_scene.predicate == pred_input2)]['object'].values))),
+#                     reverse = False)
+#                 obj_list2.insert(0, 'white shirt')
+#                 obj_input2 = st.selectbox(label = obj2img_msg2, options = obj_list2,
+#                                         key = 6, disabled = False)
+#                 obj_input2.lower() # 소문자로 전부 통일
         
-        col01,col02,col03=st.columns(3)
+#         col01,col02,col03=st.columns(3)
 
 
-        if (sub_input1 != "" and pred_input1 != "" and obj_input1 != "") and (sub_input2 != "" and pred_input2 != "" and obj_input2 != ""):
-        # 복합질의가 전부 다 찼을 때
+#         if (sub_input1 != "" and pred_input1 != "" and obj_input1 != "") and (sub_input2 != "" and pred_input2 != "" and obj_input2 != ""):
+#         # 복합질의가 전부 다 찼을 때
 
-            cond2_img_list = list(cond1_tbl_scene.loc[(cond1_tbl_scene['subject'] == sub_input2) & 
-                                    (cond1_tbl_scene['predicate'] == pred_input2) & (cond1_tbl_scene['object'] == obj_input2),
-                                    'image_id'])
-            grps = tbl_scene[tbl_scene['image_id'].isin(cond2_img_list)].groupby('image_id')
+#             cond2_img_list = list(cond1_tbl_scene.loc[(cond1_tbl_scene['subject'] == sub_input2) & 
+#                                     (cond1_tbl_scene['predicate'] == pred_input2) & (cond1_tbl_scene['object'] == obj_input2),
+#                                     'image_id'])
+#             grps = tbl_scene[tbl_scene['image_id'].isin(cond2_img_list)].groupby('image_id')
 
-            img_dic = dict(list(grps)) #이미지와 해당 SPO테이블이 dictionary 형태로 저장
-            img_number = len(img_dic.keys())
+#             img_dic = dict(list(grps)) #이미지와 해당 SPO테이블이 dictionary 형태로 저장
+#             img_number = len(img_dic.keys())
             
-            with col02:
-                img_number_txt1 = f"<strong><i>{img_number}</i></strong> - Image is detected ❗"
-                st.markdown(f"""<span style='text-align: left; font-size:120%'>{img_number_txt1}</span>""", unsafe_allow_html=True)
-            st.markdown("___")
+#             with col02:
+#                 img_number_txt1 = f"<strong><i>{img_number}</i></strong> - Image is detected ❗"
+#                 st.markdown(f"""<span style='text-align: left; font-size:120%'>{img_number_txt1}</span>""", unsafe_allow_html=True)
+#             st.markdown("___")
                         
-            if img_number > 0:
+#             if img_number > 0:
         
-                col1, col2, col3, col4 = st.columns([4.8, 0.2, 4.8, 0.2])
+#                 col1, col2, col3, col4 = st.columns([4.8, 0.2, 4.8, 0.2])
 
-                if 'counter' not in st.session_state: 
-                    st.session_state.counter = 0
+#                 if 'counter' not in st.session_state: 
+#                     st.session_state.counter = 0
 
-                # Get list of images in folder
-                img_num_lst =  list(img_dic.keys())
-                img_path =  """https://cs.stanford.edu/people/rak248/VG_100K/"""
-                filteredImages = [img_path + f"{img_num}.jpg" for img_num in img_num_lst]
+#                 # Get list of images in folder
+#                 img_num_lst =  list(img_dic.keys())
+#                 img_path =  """https://cs.stanford.edu/people/rak248/VG_100K/"""
+#                 filteredImages = [img_path + f"{img_num}.jpg" for img_num in img_num_lst]
                 
-                #filteredImages = [image_resize(image) for image in filteredImages]
-                def showPhoto(photo, df):
-                    ## Increments the counter to get next photo
-                    st.session_state.counter += 1
-                    if st.session_state.counter >= len(filteredImages):
-                        st.session_state.counter = 0
+#                 #filteredImages = [image_resize(image) for image in filteredImages]
+#                 def showPhoto(photo, df):
+#                     ## Increments the counter to get next photo
+#                     st.session_state.counter += 1
+#                     if st.session_state.counter >= len(filteredImages):
+#                         st.session_state.counter = 0
 
-                    with col03:
-                        img_number_txt2 = f"<strong style='font-size:150%'><i>{st.session_state.counter + 1}</i></strong>(th) out of {img_number}"
-                        st.markdown(f"""###### {img_number_txt2}""", unsafe_allow_html=True)
+#                     with col03:
+#                         img_number_txt2 = f"<strong style='font-size:150%'><i>{st.session_state.counter + 1}</i></strong>(th) out of {img_number}"
+#                         st.markdown(f"""###### {img_number_txt2}""", unsafe_allow_html=True)
 
-                    with col1:
-                        res_ttl1 = f"Result 1 : <strong style = 'font-size : 120%'><i>Image</i></strong> matched by SPO"
-                        st.markdown(f"""##### {res_ttl1}""",
-                                    unsafe_allow_html=True)
-                        st.image(photo)
-                    with col3: 
-                        res_ttl2 = f"Result 2 : <strong style = 'font-size : 120%'><i>Scene Graph</i></strong> of Image matched by SPO"
-                        st.markdown(f"""##### {res_ttl2}""",
-                                    unsafe_allow_html=True)
-                        graph_visual(df, 'subject','object','predicate')
+#                     with col1:
+#                         res_ttl1 = f"Result 1 : <strong style = 'font-size : 120%'><i>Image</i></strong> matched by SPO"
+#                         st.markdown(f"""##### {res_ttl1}""",
+#                                     unsafe_allow_html=True)
+#                         st.image(photo)
+#                     with col3: 
+#                         res_ttl2 = f"Result 2 : <strong style = 'font-size : 120%'><i>Scene Graph</i></strong> of Image matched by SPO"
+#                         st.markdown(f"""##### {res_ttl2}""",
+#                                     unsafe_allow_html=True)
+#                         graph_visual(df, 'subject','object','predicate')
 
 
                 
 
-                # Select photo a send it to button
-                photo = filteredImages[st.session_state.counter%img_number]
-                df_idx = img_num_lst[st.session_state.counter%img_number]
-                show_btn = col01.button("이미지 검색 결과 확인하기(계속)⏭️",on_click = showPhoto, args = ([photo, img_dic[df_idx]]))
+#                 # Select photo a send it to button
+#                 photo = filteredImages[st.session_state.counter%img_number]
+#                 df_idx = img_num_lst[st.session_state.counter%img_number]
+#                 show_btn = col01.button("이미지 검색 결과 확인하기(계속)⏭️",on_click = showPhoto, args = ([photo, img_dic[df_idx]]))
 
     
     if sub_input1 == "":
@@ -500,6 +500,6 @@ elif selected_menu == 'Explanation':
     Explanation()
 elif selected_menu == "Practice1 (IMG to SPO)":
     Practice1()
-elif selected_menu == "Practice2 (SPO to IMG)":
-    Practice2()
+#elif selected_menu == "Practice2 (SPO to IMG)":
+#    Practice2()
     
