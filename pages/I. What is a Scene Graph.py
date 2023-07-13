@@ -27,7 +27,10 @@ st.markdown("""
 }
 """, unsafe_allow_html=True)
 
-tbl_scene=pd.read_pickle('data/tbl_scene.pkl')
+
+with open(file='data/tbl_scene.pkl', mode='rb') as f:
+    tbl_scene=pd.read_pickle(f)
+
 
 def get_spo(Subject, Predicate, Object):
     condition = ((tbl_scene.subject == Subject)&(tbl_scene.predicate == Predicate)&(tbl_scene.object == Object))
