@@ -197,8 +197,8 @@ def main() :
         orientation = "horizontal",
         styles = {"container": {"padding": "5!important", "background-color": "#fafafa"},
         "icon": {"font-size": "21px"},
-        "nav-link": {"font-size": "19px", "text-align": "center", "margin":"0px", "--hover-color": "#eee"},
-        "nav-link-selected": {"background-color": "#007AFF",}})
+        "nav-link": {"font-size": "19px", "text-align": "center", "margin":"0px"}
+        )
 
     if selected_menu == "Intro":
         Intro()
