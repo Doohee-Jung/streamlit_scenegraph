@@ -36,7 +36,7 @@ def load_image(img_path):
 
 
 def Intro():
-    st.markdown('### Scene Graph란?</h1>', unsafe_allow_html=True)
+    st.markdown('### <h1 style='text-align: center;font-size:270%'> Scene Graph란?</h1>', unsafe_allow_html=True)
 
     det_exp = """
                 Scene Graph(장면 그래프)란 이미지 및 영상 데이터의 <strong>장면(scene)에서 객체(object) 및 관계(relationship)를 추출</strong>하고 이를 
@@ -94,28 +94,38 @@ def Explanation():
     st.text("")
     st.image(img2)
     st.text("")
+    img_text = """
+                술어(predicate)를 **노드(node)**로 그래프 모델링하는 경우 \n
+              일반적으로 Scene Graph 모델링 시 속성(property)정보가 없는 RDF(Resource Description Framework) 형태의\n
+              그래프로써 가장 많이 사용하는 기법 \n
+              술어를 노드로 표현하여 직관적일 수 있지만, 노드의 수가 많아져서 연산량 증가 \n
+              술어(predicate)를 엣지(edge)로 그래프 모델링하는 경우 \n
+              객체 간 관계를 나타내는 **술어를 엣지**로 표현하여 기존 SPO의 형태를 유연하게 나타낸 그래프 모델링 \n
+              GDB의 **속성정보를 이용**하여 술어에 대한 부가 정보를 엣지의 속성정보로 삽입 가능 \n
+              술어를 엣지로 표현하여 노드로 표현했을 때보다 **적은 용량**의 DB모델 및 연산속도 감소
 
-    img2_text = """
-            <strong style=" font-size : 120%"> 술어(predicate)를 <i>노드(node)</i>로 그래프 모델링하는 경우</strong><br>
-            일반적으로 Scene Graph 모델링 시 속성(property)정보가 없는 RDF(Resource Description Framework) 형태의<br>
-            그래프로써 가장 많이 사용하는 기법<br>
-            술어를 노드로 표현하여 직관적일 수 있지만, 노드의 수가 많아져서 연산량 증가<br><br>
-            술어(predicate)를 엣지(edge)로 그래프 모델링하는 경우</strong><br>
-            객체 간 관계를 나타내는 <strong>술어를 엣지</strong>로 표현하여 기존 SPO의 형태를 유연하게 나타낸 그래프 모델링<br>
-            GDB의 <i>속성정보를 이용</i>하여 술어에 대한 부가 정보를 엣지의 속성정보로 삽입 가능<br>
-            술어를 엣지로 표현하여 노드로 표현했을 때보다 <strong>적은 용량의 DB모델 및 연산속도 감소</strong>"""
-    #st.wrtie(img1_text)
-    img2_text_html = f"""
-    <h6 style='text-align: left;
-    font-family : times arial; line-height : 200%; 
-    font-size : 100%; font-weight : 500'>{img2_text}\n\n</h6>"""
-    st.markdown(img2_text_html, unsafe_allow_html=True)
+    
+    # img2_text = """
+    #         <strong style=" font-size : 120%"> 술어(predicate)를 <i>노드(node)</i>로 그래프 모델링하는 경우</strong><br>
+    #         일반적으로 Scene Graph 모델링 시 속성(property)정보가 없는 RDF(Resource Description Framework) 형태의<br>
+    #         그래프로써 가장 많이 사용하는 기법<br>
+    #         술어를 노드로 표현하여 직관적일 수 있지만, 노드의 수가 많아져서 연산량 증가<br><br>
+    #         술어(predicate)를 엣지(edge)로 그래프 모델링하는 경우</strong><br>
+    #         객체 간 관계를 나타내는 <strong>술어를 엣지</strong>로 표현하여 기존 SPO의 형태를 유연하게 나타낸 그래프 모델링<br>
+    #         GDB의 <i>속성정보를 이용</i>하여 술어에 대한 부가 정보를 엣지의 속성정보로 삽입 가능<br>
+    #         술어를 엣지로 표현하여 노드로 표현했을 때보다 <strong>적은 용량의 DB모델 및 연산속도 감소</strong>"""
+    st.wrtie(img_text)
+    # img2_text_html = f"""
+    # <h6 style='text-align: left;
+    # font-family : times arial; line-height : 200%; 
+    # font-size : 100%; font-weight : 500'>{img2_text}\n\n</h6>"""
+    # st.markdown(img2_text_html, unsafe_allow_html=True)
     st.text("")
 #----------------------------------------------------------------------------------------------------------------
 
 def Practice1():
 
-    ttl_txt1_1 = "☑ 이미지를 이용한 및 SPO Scene Graph 추출"
+    ttl_txt1_1 = "이미지를 이용한 및 SPO Scene Graph 추출"
     st.markdown(f""" <h1 class ="center"> {ttl_txt1_1} </h1>""", unsafe_allow_html=True)
    
     st.text("")
@@ -138,7 +148,7 @@ def Practice1():
     if clicked is not None:
         imageurl=imageUrls[int(clicked)] if clicked else imageUrls[0]
         img_idx = imageurl.split('/')[-1][:-4]
-        st.text(f"• 이미지 번호 {img_idx}를 선택하셨습니다.")
+        st.text(f"이미지 번호 {img_idx}를 선택하셨습니다.")
 
 
         col_1, col_2, col_3, col_4 = st.columns([3.5, 0.2, 7.1, 0.2])
@@ -151,7 +161,7 @@ def Practice1():
                 min_ttl1 = f"Result 1 : selected <i>Image</i>"
                 st.markdown(f"""## <h5 style='text-align: center; font-size:250%, font-weight = 600'>{min_ttl1}</h5>""", unsafe_allow_html=True)
                 
-                with st.spinner('Loading for Scene Graph...⌛️'):
+                with st.spinner('Loading for Scene Graph...'):
                     time.sleep(0.5)
 
                     st.image(imageurl, width = 500)
