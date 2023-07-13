@@ -91,7 +91,7 @@ def Explanation():
     st.markdown("___")
 #----------------------------------------------------------------------------------------------------------------
     st.markdown("""## <h1 style='text-align: left; font-size:180%'>☑ GDB를 이용한 Scene Graph 모델링</h1>""", unsafe_allow_html=True)
-    img_2 = '/app/streamlit_scenegraph/image/part1_img2.PNG'
+    img_2 = 'image/part1_img2.PNG'
     img2 = load_image(img_2)
     text2 = """
             Scene Graph의 모델링 방법론은 ⑴술어(predicate)를 하나의 노드로 따로 표현하는 방식과 ⑵술어를 엣지로써 표현하는 두 가지 방식이 있습니다.\n
