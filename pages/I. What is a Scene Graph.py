@@ -19,14 +19,6 @@ from utils.vis import graph_visual
 
 st.set_page_config(layout="wide")
 
-st.markdown("""
-<style>
-.center {
-    text-align: center; 
-    font-size:250% !important;
-}
-""", unsafe_allow_html=True)
-
 
 with open(file='data/tbl_scene.pkl', mode='rb') as f:
     tbl_scene=pd.read_pickle(f)
@@ -44,7 +36,7 @@ def load_image(img_path):
 
 
 def Intro():
-    st.markdown('<h1 class ="center"> Scene Graph란?</h1>', unsafe_allow_html=True)
+    st.markdown('### Scene Graph란?</h1>', unsafe_allow_html=True)
 
     det_exp = """
                 Scene Graph(장면 그래프)란 이미지 및 영상 데이터의 <strong>장면(scene)에서 객체(object) 및 관계(relationship)를 추출</strong>하고 이를 
@@ -106,14 +98,13 @@ def Explanation():
 
     img2_text = """
             <strong style=" font-size : 120%">• 술어(predicate)를 <i>노드(node)</i>로 그래프 모델링하는 경우</strong><br>
-            &nbsp&nbsp&nbsp&nbsp◦ 일반적으로 Scene Graph 모델링 시 속성(property)정보가 없는 RDF(Resource Description Framework) 
-            형태의<br>
-            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp그래프로써 가장 많이 사용하는 기법<br>
-            &nbsp&nbsp&nbsp&nbsp◦ 술어를 노드로 표현하여 직관적일 수 있지만, <i>노드의 수가 많아져서 연산량 증가</i><br><br>
-            <strong style="font-size : 120%">• 술어(predicate)를 <i>엣지(edge)</i>로 그래프 모델링하는 경우</strong><br>
-            &nbsp&nbsp&nbsp&nbsp◦ 객체 간 관계를 나타내는 <strong>술어를 엣지</strong>로 표현하여 기존 SPO의 형태를 유연하게 나타낸 그래프 모델링<br>
-            &nbsp&nbsp&nbsp&nbsp◦ GDB의 <i>속성정보를 이용</i>하여 술어에 대한 부가 정보를 엣지의 속성정보로 삽입 가능<br>
-            &nbsp&nbsp&nbsp&nbsp◦ 술어를 엣지로 표현하여 노드로 표현했을 때보다 <strong>적은 용량의 DB모델 및 연산속도 감소</strong>"""
+            &nbsp&nbsp&nbsp&nbsp◦ 일반적으로 Scene Graph 모델링 시 속성(property)정보가 없는 RDF(Resource Description Framework) 형태의<br>
+            그래프로써 가장 많이 사용하는 기법<br>
+            술어를 노드로 표현하여 직관적일 수 있지만, 노드의 수가 많아져서 연산량 증가<br><br>
+            술어(predicate)를 엣지(edge)로 그래프 모델링하는 경우</strong><br>
+            객체 간 관계를 나타내는 <strong>술어를 엣지</strong>로 표현하여 기존 SPO의 형태를 유연하게 나타낸 그래프 모델링<br>
+            GDB의 <i>속성정보를 이용</i>하여 술어에 대한 부가 정보를 엣지의 속성정보로 삽입 가능<br>
+            술어를 엣지로 표현하여 노드로 표현했을 때보다 <strong>적은 용량의 DB모델 및 연산속도 감소</strong>"""
     #st.wrtie(img1_text)
     img2_text_html = f"""
     <h6 style='text-align: left;
