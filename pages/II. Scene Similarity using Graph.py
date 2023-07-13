@@ -200,9 +200,10 @@ def Practice():
     
     
     with open(file='/app/streamlit_scenegraph/data/sim_dict.pkl', mode='rb') as f:
-        sim_dict=pkl.load(f)
+        sim_dict=pd.read_pickle(f)
     with open(file='/app/streamlit_scenegraph/data/spo_dict.pkl', mode='rb') as f:
-        df_dict=pkl.load(f)
+        df_dict=pd.read_pickle(f)
+
 
     
     image_lst = ['61539','2370806','2368620','2344853','2343751','285795','2373302','107992','2353558','2348780','2349118']
