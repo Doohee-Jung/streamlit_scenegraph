@@ -13,7 +13,6 @@ from PIL import Image
 import sys,os
 from streamlit_option_menu import option_menu
 from st_click_detector import click_detector
-sys.path.append('/app/streamlit_scenegraph/pages/')
 
 import warnings
 warnings.filterwarnings('ignore') #경고 무시용
@@ -90,7 +89,7 @@ def Explanation():
         title1 = "SPO 빈도 기반 장면 간 유사도 산출"
         st.markdown(f"#### <h1 style='text-align: left; font-size:150%'>{title1}</h1>",
         unsafe_allow_html=True)
-        img_1 = '/app/streamlit_scenegraph/image/part2_img_1_1.PNG'
+        img_1 = 'image/part2_img_1_1.PNG'
         img1 = Image.open(img_1)
         img1.resize((600, 400))
         
@@ -99,7 +98,7 @@ def Explanation():
         title1 = "동형 그래프 구조적 특성에 따른 유사도 산출"
         st.markdown(f"#### <h1 style='text-align: left; font-size:140%'>{title1}</h1>",
         unsafe_allow_html=True)
-        img_2 = '/app/streamlit_scenegraph/image/part2_img_1_2.PNG'
+        img_2 = 'image/part2_img_1_2.PNG'
         img2 = Image.open(img_2)
         img2.resize((600, 400))
         st.write("\n")
@@ -156,7 +155,7 @@ MCS는 Jaccard 유사도와 비슷하지만, Jaccard 유사도 달리 **최대�
     title2 = "Maximum Common Subgraph(MCS)를 이용한 Scene Graph 구조적 유사도 산출"
     st.markdown(f"#### <h1 style='text-align: left; font-size:150%'>{title2}</h1>",
     unsafe_allow_html=True)
-    img_1 = '/app/streamlit_scenegraph/image/part2_img2.PNG'
+    img_1 = 'image/part2_img2.PNG'
     img1 = Image.open(img_1)
     img1.resize((1000, 700))
         
@@ -199,9 +198,9 @@ def Practice():
 
     
     
-    with open(file='/app/streamlit_scenegraph/data/sim_dict.pkl', mode='rb') as f:
+    with open(file='data/sim_dict.pkl', mode='rb') as f:
         sim_dict=pd.read_pickle(f)
-    with open(file='/app/streamlit_scenegraph/data/spo_dict.pkl', mode='rb') as f:
+    with open(file='data/spo_dict.pkl', mode='rb') as f:
         df_dict=pd.read_pickle(f)
 
 
