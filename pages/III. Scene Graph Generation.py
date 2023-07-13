@@ -9,7 +9,6 @@ import numpy as np
 import json
 import io
 from streamlit_option_menu import option_menu
-sys.path.append('/app/streamlit_scenegraph/pages/')
 from utils.vis import graph_visual
 
 st.set_page_config(layout="wide")
@@ -28,7 +27,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 #--File Path--------------------------------------------------------------------------------------------------------------
-img_path = '/app/streamlit_scenegraph/image/'
+img_path = 'image/'
 img1_path = img_path+'part1_img1.PNG'
 img2_path = img_path+'part3_img1.PNG'
 img3_path = img_path+'part3_img2.PNG'
