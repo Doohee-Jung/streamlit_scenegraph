@@ -489,6 +489,7 @@ selected_menu = option_menu(
     styles = {"container": {"padding": "5!important", "background-color": "#fafafa"},
     "icon": {"font-size": "21px"},
     "nav-link": {"font-size": "13.0px", "text-align": "center", "margin":"0px"}
+             }
               )
 
 
