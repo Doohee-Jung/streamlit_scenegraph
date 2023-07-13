@@ -164,7 +164,7 @@ def Practice1():
                 with st.spinner('Loading for Scene Graph...'):
                     time.sleep(0.5)
 
-                    st.image(imageurl, width = 500)
+                    st.image(imageurl)
                    
                     
                 
@@ -175,7 +175,7 @@ def Practice1():
             
             if clicked is not None:
 
-                graph_visual(df_dict[img_idx],'subject','object','predicate',width=900,height=800)
+                graph_visual(df_dict[img_idx],'subject','object','predicate')
 
     else:
         pass
