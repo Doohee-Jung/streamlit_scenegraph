@@ -18,7 +18,13 @@ from streamlit_option_menu import option_menu
 from utils.vis import graph_visual
 
 st.set_page_config(layout="wide")
-
+st.markdown("""
+<style>
+.center {
+    text-align: center; 
+    font-size:250% !important;
+}
+""", unsafe_allow_html=True)
 
 with open(file='data/tbl_scene.pkl', mode='rb') as f:
     tbl_scene=pd.read_pickle(f)
