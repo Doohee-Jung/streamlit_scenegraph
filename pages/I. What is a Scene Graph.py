@@ -41,8 +41,7 @@ def Intro():
     det_exp = """
                 Scene Graph(장면 그래프)란 이미지 및 영상 데이터의 <strong>장면(scene)에서 객체(object) 및 관계(relationship)를 추출</strong>하고 이를 
                 <strong>주어-술어-목적어' 관계인 SPO(Subject, Predicate, Object) 형태로 그래프를 통해 표현</strong>하는 방법입니다.<br><br>
-                &nbsp본 R&D는 기존 장면의 객체들 간의 관계의 SPO를 
-                <strong>그래프 데이터 베이스(GDB)</strong>를 이용한 <strong>지식그래프(Knowledge Graph)</strong>로 표현하여, 관계기반 데이터의 조회 및 추출을 편리하게하고
+                본 R&D는 기존 장면의 객체들 간의 관계의 SPO를 <strong>그래프 데이터 베이스(GDB)</strong>를 이용한 <strong>지식그래프(Knowledge Graph)</strong>로 표현하여, 관계기반 데이터의 조회 및 추출을 편리하게하고
                 더 나아가 이미지나 영상의 장면 유사도, 예측 그리고 자동화 시스템을 만드는 것을 목표로 합니다."""
     
     det_exp_font = f"""<h6 style='text-align: left; font-family : times arial; 
@@ -67,7 +66,7 @@ def Explanation():
     det_exp = """
                 &nbsp이번 챕터에는 <strong>그래프 데이터 베이스(GDB)</strong>를 사용하여 
                 Scene Graph를 <strong>지식그래프(Knowledge Graph) 형태</strong>로 표현합니다.<br><br>
-                &nbspScene Graph를 GDB의 강점인 <strong>속성(property)</strong>정보를 이용한 
+                Scene Graph를 GDB의 강점인 <strong>속성(property)</strong>정보를 이용한 
                 LPG(Labeled Property Graph) 형태로 모델링하여 단어 간의 SPO의 관계를 유연하게 설명하고, 다양한 그래프 알고리즘 등을 사용할 수 있습니다."""
     
     det_exp_font = f"""<h6 style='text-align: left;  font-family : times arial; 
@@ -98,7 +97,7 @@ def Explanation():
 
     img2_text = """
             <strong style=" font-size : 120%">• 술어(predicate)를 <i>노드(node)</i>로 그래프 모델링하는 경우</strong><br>
-            &nbsp&nbsp&nbsp&nbsp◦ 일반적으로 Scene Graph 모델링 시 속성(property)정보가 없는 RDF(Resource Description Framework) 형태의<br>
+            일반적으로 Scene Graph 모델링 시 속성(property)정보가 없는 RDF(Resource Description Framework) 형태의<br>
             그래프로써 가장 많이 사용하는 기법<br>
             술어를 노드로 표현하여 직관적일 수 있지만, 노드의 수가 많아져서 연산량 증가<br><br>
             술어(predicate)를 엣지(edge)로 그래프 모델링하는 경우</strong><br>
@@ -150,8 +149,7 @@ def Practice1():
             if clicked is not None:
 
                 min_ttl1 = f"Result 1 : selected <i>Image</i>"
-                st.markdown(f"""## <h5 style='text-align: center; font-size:250%, font-weight = 600'>{min_ttl1}</h5>""", 
-                        unsafe_allow_html=True)
+                st.markdown(f"""## <h5 style='text-align: center; font-size:250%, font-weight = 600'>{min_ttl1}</h5>""", unsafe_allow_html=True)
                 
                 with st.spinner('Loading for Scene Graph...⌛️'):
                     time.sleep(0.5)
@@ -182,7 +180,7 @@ def Practice1():
 def Practice2():
 
 
-    ttl_txt1_1 = "☑ SPO를 이용한 이미지 및 해당 이미지에 대한 Scene Graph 추출"
+    ttl_txt1_1 = "SPO를 이용한 이미지 및 해당 이미지에 대한 Scene Graph 추출"
     st.markdown(f"""## <h1 class ="center">{ttl_txt1_1}</h1>""", unsafe_allow_html=True)
     st.text("")
 
@@ -248,7 +246,7 @@ def Practice2():
                 img_dic = get_spo(sub_input1, pred_input1, obj_input1) #이미지와 해당 SPO테이블이 dictionary 형태로 저장되는 함수
                 img_number = len(img_dic.keys())
                 with col02:
-                    img_number_txt1 = f"<strong><i>{img_number}</i></strong> - Image is detected ❗"
+                    img_number_txt1 = f"<strong><i>{img_number}</i></strong> - Image is detected "
                     st.markdown(f"""<span style='text-align: left; font-size:120%'>{img_number_txt1}</span>""", unsafe_allow_html=True)
                 st.markdown("___")
                             
@@ -292,7 +290,7 @@ def Practice2():
                     # Select photo a send it to button
                     photo = filteredImages[st.session_state.counter%img_number]
                     df_idx = img_num_lst[st.session_state.counter%img_number]
-                    show_btn = col01.button("이미지 검색 결과 확인하기(계속)⏭️",on_click = showPhoto, args = ([photo, img_dic[df_idx]]))
+                    show_btn = col01.button("이미지 검색 결과 확인하기(계속)",on_click = showPhoto, args = ([photo, img_dic[df_idx]]))
 
             
             if sub_input1 == "":
@@ -490,8 +488,8 @@ selected_menu = option_menu(
     orientation = "horizontal",
     styles = {"container": {"padding": "5!important", "background-color": "#fafafa"},
     "icon": {"font-size": "21px"},
-    "nav-link": {"font-size": "13.0px", "text-align": "center", "margin":"0px", "--hover-color": "#eee"},
-    "nav-link-selected": {"background-color": "#007AFF",}})
+    "nav-link": {"font-size": "13.0px", "text-align": "center", "margin":"0px"}
+              )
 
 
     
