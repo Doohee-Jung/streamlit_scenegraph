@@ -64,16 +64,16 @@ def Explanation():
     st.markdown("### <h1 style='text-align: center;font-size:270%'>그래프 데이터베이스(GDB)를 이용한 Scene Graph</h1>", unsafe_allow_html=True)
     
     det_exp = """
-                이번 챕터에는 **그래프 데이터 베이스(GDB)**를 사용하여 
-                Scene Graph를 **지식그래프(Knowledge Graph) 형태**로 표현합니다.<br><br>
-                Scene Graph를 GDB의 강점인 **속성(property)**정보를 이용한 
+                이번 챕터에는 <strong>그래프 데이터 베이스(GDB)<strong>를 사용하여 
+                Scene Graph를 <strong>지식그래프(Knowledge Graph) 형태<strong>로 표현합니다.<br><br>
+                Scene Graph를 GDB의 강점인 <strong>속성(property)<strong>정보를 이용한 
                 LPG(Labeled Property Graph) 형태로 모델링하여 단어 간의 SPO의 관계를 유연하게 설명하고, 다양한 그래프 알고리즘 등을 사용할 수 있습니다."""
     
-    # det_exp_font = f"""<h6 style='text-align: left;  font-family : times arial; 
-    # line-height : 165%; font-size : 117%; font-weight : 400'>{det_exp}\n\n</h6>"""
+    det_exp_font = f"""<h6 style='text-align: left;  font-family : times arial; 
+    line-height : 165%; font-size : 117%; font-weight : 400'>{det_exp}\n\n</h6>"""
 
-    st.write(det_exp)
-       # st.markdown("#### <h1 style='text-align: left;  font-size:230%'>Explanation</h1>", unsafe_allow_html=True)
+    # st.write(det_exp)
+    st.markdown("#### <h1 style='text-align: left;  font-size:230%'>Explanation</h1>", unsafe_allow_html=True)
     st.write("")
     
     col1,col2 = st.columns([8.5,1])
@@ -94,32 +94,30 @@ def Explanation():
     st.text("")
     st.image(img2)
     st.text("")
-    img_text = """
-                술어(predicate)를 **노드(node)**로 그래프 모델링하는 경우 \n
-              일반적으로 Scene Graph 모델링 시 속성(property)정보가 없는 RDF(Resource Description Framework) 형태의\n
-              그래프로써 가장 많이 사용하는 기법 \n
-              술어를 노드로 표현하여 직관적일 수 있지만, 노드의 수가 많아져서 연산량 증가 \n
-              술어(predicate)를 엣지(edge)로 그래프 모델링하는 경우 \n
-              객체 간 관계를 나타내는 **술어를 엣지**로 표현하여 기존 SPO의 형태를 유연하게 나타낸 그래프 모델링 \n
-              GDB의 **속성정보를 이용**하여 술어에 대한 부가 정보를 엣지의 속성정보로 삽입 가능 \n
-              술어를 엣지로 표현하여 노드로 표현했을 때보다 **적은 용량**의 DB모델 및 연산속도 감소
+    # img_text = """
+    #             술어(predicate)를 **노드(node)**로 그래프 모델링하는 경우 \n
+    #           일반적으로 Scene Graph 모델링 시 속성(property)정보가 없는 RDF(Resource Description Framework) 형태의\n
+    #           그래프로써 가장 많이 사용하는 기법 \n
+    #           술어를 노드로 표현하여 직관적일 수 있지만, 노드의 수가 많아져서 연산량 증가 \n
+    #           술어(predicate)를 엣지(edge)로 그래프 모델링하는 경우 \n
+    #           객체 간 관계를 나타내는 **술어를 엣지**로 표현하여 기존 SPO의 형태를 유연하게 나타낸 그래프 모델링 \n
+    #           GDB의 **속성정보를 이용**하여 술어에 대한 부가 정보를 엣지의 속성정보로 삽입 가능 \n
+    #           술어를 엣지로 표현하여 노드로 표현했을 때보다 **적은 용량**의 DB모델 및 연산속도 감소
 
     
-    # img2_text = """
-    #         <strong style=" font-size : 120%"> 술어(predicate)를 <i>노드(node)</i>로 그래프 모델링하는 경우</strong><br>
-    #         일반적으로 Scene Graph 모델링 시 속성(property)정보가 없는 RDF(Resource Description Framework) 형태의<br>
-    #         그래프로써 가장 많이 사용하는 기법<br>
-    #         술어를 노드로 표현하여 직관적일 수 있지만, 노드의 수가 많아져서 연산량 증가<br><br>
-    #         술어(predicate)를 엣지(edge)로 그래프 모델링하는 경우</strong><br>
-    #         객체 간 관계를 나타내는 <strong>술어를 엣지</strong>로 표현하여 기존 SPO의 형태를 유연하게 나타낸 그래프 모델링<br>
-    #         GDB의 <i>속성정보를 이용</i>하여 술어에 대한 부가 정보를 엣지의 속성정보로 삽입 가능<br>
-    #         술어를 엣지로 표현하여 노드로 표현했을 때보다 <strong>적은 용량의 DB모델 및 연산속도 감소</strong>"""
-    st.wrtie(img_text)
-    # img2_text_html = f"""
-    # <h6 style='text-align: left;
-    # font-family : times arial; line-height : 200%; 
-    # font-size : 100%; font-weight : 500'>{img2_text}\n\n</h6>"""
-    # st.markdown(img2_text_html, unsafe_allow_html=True)
+    img2_text = """
+            <strong style=" font-size : 120%"> 술어(predicate)를 <i>노드(node)</i>로 그래프 모델링하는 경우</strong><br>
+            일반적으로 Scene Graph 모델링 시 속성(property)정보가 없는 RDF(Resource Description Framework) 형태의<br>
+            그래프로써 가장 많이 사용하는 기법<br>
+            술어를 노드로 표현하여 직관적일 수 있지만, 노드의 수가 많아져서 연산량 증가<br><br>
+            술어(predicate)를 엣지(edge)로 그래프 모델링하는 경우</strong><br>
+            객체 간 관계를 나타내는 <strong>술어를 엣지</strong>로 표현하여 기존 SPO의 형태를 유연하게 나타낸 그래프 모델링<br>
+            GDB의 <i>속성정보를 이용</i>하여 술어에 대한 부가 정보를 엣지의 속성정보로 삽입 가능<br>
+            술어를 엣지로 표현하여 노드로 표현했을 때보다 <strong>적은 용량의 DB모델 및 연산속도 감소</strong>"""
+    st.write(img_text)
+    img2_text_html = f"""<h6 style='text-align: left;font-family : times arial; line-height : 200%; 
+    font-size : 100%; font-weight : 500'>{img2_text}\n\n</h6>"""
+    st.markdown(img2_text_html, unsafe_allow_html=True)
     st.text("")
 #----------------------------------------------------------------------------------------------------------------
 
