@@ -467,14 +467,14 @@ def Practice1():
 #                 show_btn = col01.button("이미지 검색 결과 확인하기(계속)⏭️",on_click = showPhoto, args = ([photo, img_dic[df_idx]]))
 
     
-    if sub_input1 == "":
-        st.write("❗ 주어를 입력(선택)해주세요")
-    if pred_input1 == "":
-        st.write("❗ 술어를 입력(선택)해주세요")
-    if obj_input1 == "":
-        st.write("❗ 목적어를 입력(선택)해주세요")
-    if sub_input1 == "" and pred_input1 == "" and obj_input1 == "":
-        st.write("❗ **주어** 혹은 **술어** 혹은 **목적어**를 ***전부*** 입력해주세요.")
+#    if sub_input1 == "":
+#        st.write("❗ 주어를 입력(선택)해주세요")
+#    if pred_input1 == "":
+#        st.write("❗ 술어를 입력(선택)해주세요")
+#    if obj_input1 == "":
+#        st.write("❗ 목적어를 입력(선택)해주세요")
+#    if sub_input1 == "" and pred_input1 == "" and obj_input1 == "":
+#        st.write("❗ **주어** 혹은 **술어** 혹은 **목적어**를 ***전부*** 입력해주세요.")
  
     # -------------------------------------- 복합질의 내 조건2(복합 질의 조건) (上)--------------------------------------------
 
