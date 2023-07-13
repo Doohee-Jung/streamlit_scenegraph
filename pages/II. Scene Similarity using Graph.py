@@ -76,7 +76,7 @@ def Explanation():
 
     st.markdown("""## <h1 style='text-align: left; font-size:180%'>☑ 장면의 SPO를 통한 유사도 산출방법</h1>""", 
     unsafe_allow_html=True)
-    img_1 = '/app/streamlit_scenegraph/image/part2_img_1_1.PNG'
+    img_1 = 'image/part2_img_1_1.PNG'
     img1 = Image.open(img_1)
     st.write("""
 이미지나 영상의 장면에서 객체 및 객체의 상태나 행위를 관계로 추출할 수 있습니다.\n
