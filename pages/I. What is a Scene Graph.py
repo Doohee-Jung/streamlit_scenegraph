@@ -64,16 +64,16 @@ def Explanation():
     st.markdown("### <h1 style='text-align: center;font-size:270%'>그래프 데이터베이스(GDB)를 이용한 Scene Graph</h1>", unsafe_allow_html=True)
     
     det_exp = """
-                &nbsp이번 챕터에는 <strong>그래프 데이터 베이스(GDB)</strong>를 사용하여 
-                Scene Graph를 <strong>지식그래프(Knowledge Graph) 형태</strong>로 표현합니다.<br><br>
-                Scene Graph를 GDB의 강점인 <strong>속성(property)</strong>정보를 이용한 
+                이번 챕터에는 **그래프 데이터 베이스(GDB)**를 사용하여 
+                Scene Graph를 **지식그래프(Knowledge Graph) 형태**로 표현합니다.<br><br>
+                Scene Graph를 GDB의 강점인 **속성(property)**정보를 이용한 
                 LPG(Labeled Property Graph) 형태로 모델링하여 단어 간의 SPO의 관계를 유연하게 설명하고, 다양한 그래프 알고리즘 등을 사용할 수 있습니다."""
     
-    det_exp_font = f"""<h6 style='text-align: left;  font-family : times arial; 
-    line-height : 165%; font-size : 117%; font-weight : 400'>{det_exp}\n\n</h6>"""
+    # det_exp_font = f"""<h6 style='text-align: left;  font-family : times arial; 
+    # line-height : 165%; font-size : 117%; font-weight : 400'>{det_exp}\n\n</h6>"""
 
-
-    st.markdown("#### <h1 style='text-align: left;  font-size:230%'>Explanation</h1>", unsafe_allow_html=True)
+    st.write(det_exp)
+       # st.markdown("#### <h1 style='text-align: left;  font-size:230%'>Explanation</h1>", unsafe_allow_html=True)
     st.write("")
     
     col1,col2 = st.columns([8.5,1])
