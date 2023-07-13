@@ -491,7 +491,7 @@ def Practice1():
         
 selected_menu = option_menu(
     None, 
-    ["Intro", "Explanation", "Practice1 (IMG to SPO)", "Practice2 (SPO to IMG)"], 
+    ["Intro", "Explanation", "Practice"], 
     icons = ['bookmark-check', 'file-play-fill'], 
     menu_icon = "cast", 
     default_index = 0, 
@@ -508,7 +508,7 @@ if selected_menu == "Intro":
     Intro()
 elif selected_menu == 'Explanation':
     Explanation()
-elif selected_menu == "Practice1 (IMG to SPO)":
+elif selected_menu == "Practice":
     Practice1()
 #elif selected_menu == "Practice2 (SPO to IMG)":
 #    Practice2()
